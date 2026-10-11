@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.mulungushi.lodgebilling.ReceiptController"
+      spacing="12" style="-fx-padding: 30; -fx-background-color: white;"
+      prefWidth="420" prefHeight="480">
+
+    <Label text="LODGE BILLING LAB" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #1a56a8;"/>
+    <Label text="Official Receipt" style="-fx-font-size: 14; -fx-text-fill: #555;"/>
+    <Separator/>
+
+    <GridPane hgap="15" vgap="10">
+        <Label text="Bill No:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <Label fx:id="billIdLabel" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+        <Label text="Guest Name:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <Label fx:id="guestLabel" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+        <Label text="Room Type:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <Label fx:id="roomLabel" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+        <Label text="Nights:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+        <Label fx:id="nightsLabel" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+        <Label text="Extras:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+        <Label fx:id="extrasLabel" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+        <Label text="Total Amount:" GridPane.columnIndex="0" GridPane.rowIndex="5" style="-fx-font-weight: bold;"/>
+        <Label fx:id="totalLabel" GridPane.columnIndex="1" GridPane.rowIndex="5" style="-fx-font-weight: bold;"/>
+
+        <Label text="Amount Paid:" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+        <Label fx:id="paidLabel" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+
+        <Label text="Balance:" GridPane.columnIndex="0" GridPane.rowIndex="7" style="-fx-font-weight: bold;"/>
+        <Label fx:id="balanceLabel" GridPane.columnIndex="1" GridPane.rowIndex="7" style="-fx-font-weight: bold; -fx-text-fill: #c0392b;"/>
+    </GridPane>
+
+    <Separator/>
+    <Label fx:id="notesLabel" wrapText="true"/>
+
+    <Region VBox.vgrow="ALWAYS"/>
+
+    <Button text="Close" onAction="#handleClose" maxWidth="Infinity"
+            style="-fx-background-color: #1a56a8; -fx-text-fill: white;"/>
+</VBox>

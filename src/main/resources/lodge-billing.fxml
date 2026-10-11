@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.mulungushi.lodgebilling.LodgeController"
+            prefWidth="1100" prefHeight="700">
+
+    <!-- Top Menu Bar -->
+    <top>
+        <VBox>
+            <MenuBar>
+                <Menu text="File">
+                    <MenuItem text="Exit" onAction="#handleExit"/>
+                </Menu>
+                <Menu text="Help">
+                    <MenuItem text="About" onAction="#handleAbout"/>
+                </Menu>
+            </MenuBar>
+
+            <!-- Blue Header -->
+            <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-background-color: #1a56a8; -fx-padding: 12 20;">
+                <Label text="Lodge Billing Lab" textFill="white">
+                    <font>
+                        <Font name="System Bold" size="22"/>
+                    </font>
+                </Label>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label text="File" textFill="white"/>
+                <Label text="Help" textFill="white"/>
+            </HBox>
+
+            <!-- Toolbar -->
+            <HBox spacing="25" style="-fx-padding: 12 20; -fx-background-color: #f8f9fa; -fx-border-color: #dee2e6; -fx-border-width: 0 0 1 0;">
+                <Button text=" New guest" onAction="#handleNewGuest" style="-fx-background-color: transparent;"/>
+                <Button text=" View receipt" onAction="#handleViewReceipt" style="-fx-background-color: transparent;"/>
+                <Button text=" Delete selected bill" onAction="#handleDeleteBill" style="-fx-background-color: transparent;"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- Center Content -->
+    <center>
+        <HBox spacing="30" style="-fx-padding: 25;">
+            <!-- Left Form -->
+            <VBox spacing="15" HBox.hgrow="ALWAYS">
+                <Label text="Lodge Billing Lab" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #1a56a8;"/>
+                <Label text="ICT261 Lecture 3  |  Kasamba Faith Masinja 202508329  |  Mulungushi University" style="-fx-text-fill: #666;"/>
+
+                <GridPane hgap="15" vgap="12" style="-fx-padding: 15 0 0 0;">
+                    <Label text="Guest name:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                    <TextField fx:id="guestNameField" prefWidth="280" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                    <Label text="Room type:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                    <ComboBox fx:id="roomTypeCombo" prefWidth="280" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                    <Label text="Nights:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                    <TextField fx:id="nightsField" prefWidth="280" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                    <Label text="Extras in K:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                    <TextField fx:id="extrasField" prefWidth="280" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+                    <Label text="Amount paid in K:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                    <TextField fx:id="amountPaidField" prefWidth="280" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+                    <Label text="Notes:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                    <TextField fx:id="notesField" prefWidth="280" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+                </GridPane>
+
+                <HBox spacing="15" style="-fx-padding: 10 0 0 0;">
+                    <Button text="Calculate" onAction="#handleCalculate" prefWidth="110"/>
+                    <Button text="Save bill" onAction="#handleSaveBill" style="-fx-background-color: #1a56a8; -fx-text-fill: white;" prefWidth="110"/>
+                </HBox>
+
+                <!-- Saved bills section -->
+                <Label text="Saved bills" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-padding: 20 0 5 0;"/>
+                <Label fx:id="statusLabel" text="" style="-fx-text-fill: green;"/>
+
+                <TableView fx:id="billsTable" prefHeight="220">
+                    <columns>
+                        <TableColumn fx:id="billIdCol" text="Bill" prefWidth="80"/>
+                        <TableColumn fx:id="guestCol" text="Guest" prefWidth="140"/>
+                        <TableColumn fx:id="roomCol" text="Room" prefWidth="100"/>
+                        <TableColumn fx:id="nightsCol" text="Nights" prefWidth="70"/>
+                        <TableColumn fx:id="totalCol" text="Total" prefWidth="100"/>
+                        <TableColumn fx:id="paidCol" text="Paid" prefWidth="100"/>
+                        <TableColumn fx:id="balanceCol" text="Balance" prefWidth="100"/>
+                    </columns>
+                </TableView>
+            </VBox>
+
+            <!-- Right Side - Practice prices -->
+            <VBox spacing="12" prefWidth="280" style="-fx-background-color: #e8f0fe; -fx-padding: 20; -fx-background-radius: 8;">
+                <Label text="Practice room prices" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #1a56a8;"/>
+                <Label text="Standard:  K 350.00 per night"/>
+                <Label text="Deluxe:    K 550.00 per night"/>
+                <Label text="Family:    K 750.00 per night"/>
+                <Separator/>
+                <Label text="5 nights or more: 5% off the room charge." wrapText="true"/>
+                <Label text="Extras get no discount. No tax in this lab." wrapText="true"/>
+                <Label text="Saved bills last only until you close the app." wrapText="true" style="-fx-text-fill: #555;"/>
+            </VBox>
+        </HBox>
+    </center>
+</BorderPane>
